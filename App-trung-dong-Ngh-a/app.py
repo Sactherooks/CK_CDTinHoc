@@ -74,12 +74,12 @@ class Player:
         fallback = pygame.Surface((self.width, self.height), pygame.SRCALPHA)
         pygame.draw.rect(fallback, (20, 120, 20), (0, 0, self.width, self.height), border_radius=10)
 
-        self.image_idle = try_load_image("C:/Users/TBL/Documents/GitHub/App-trung-dong/mc_normal.png", (self.width, self.height))
+        self.image_idle = try_load_image("C:/Users/TBL/Documents/GitHub/CK_CDTinHoc/App-trung-dong-Ngh-a/mc_normal.png", (self.width, self.height))
         self.frames = [
-            try_load_image("C:/Users/TBL/Documents/GitHub/App-trung-dong/Không Có Tiêu Đề9_20260402131643.png", (self.width, self.height)),
-            try_load_image("C:/Users/TBL/Documents/GitHub/App-trung-dong/Không Có Tiêu Đề9_20260402131649.png", (self.width, self.height)),
+            try_load_image("C:/Users/TBL/Documents/GitHub/CK_CDTinHoc/App-trung-dong-Ngh-a/Không Có Tiêu Đề9_20260402131643.png", (self.width, self.height)),
+            try_load_image("C:/Users/TBL/Documents/GitHub/CK_CDTinHoc/App-trung-dong-Ngh-a/Không Có Tiêu Đề9_20260402131649.png", (self.width, self.height)),
         ]
-        self.image_parry = try_load_image("C:/Users/TBL/Documents/GitHub/App-trung-dong/Không Có Tiêu Đề51_20260402134240.png", (self.width, self.height))
+        self.image_parry = try_load_image("C:/Users/TBL/Documents/GitHub/CK_CDTinHoc/App-trung-dong-Ngh-a/Không Có Tiêu Đề51_20260402134240.png", (self.width, self.height))
         if self.image_parry is None:
             self.image_parry = fallback
         if self.image_idle is None:
@@ -202,7 +202,7 @@ class Projectile:
         # While False, we show a warning arrow at the screen edge.
         self.entered = False
 
-        self.image = try_load_image("C:/Users/TBL/Documents/GitHub/App-trung-dong/Fiery katana with ethereal aura.png", (self.width, self.height))
+        self.image = try_load_image("C:/Users/TBL/Documents/GitHub/CK_CDTinHoc/App-trung-dong-Ngh-a/Fiery katana with ethereal aura.png", (self.width, self.height))
         if self.image is None:
             self.image = pygame.Surface((self.width, self.height), pygame.SRCALPHA)
             pygame.draw.polygon(
@@ -247,7 +247,7 @@ class Item:
             self.width,
             self.height,
         )
-        self.image = try_load_image("C:/Users/TBL/Documents/GitHub/App-trung-dong/baogay.png", (self.width, self.height))
+        self.image = try_load_image("C:/Users/TBL/Documents/GitHub/CK_CDTinHoc/App-trung-dong-Ngh-a/baogay.png", (self.width, self.height))
         if self.image is None:
             self.image = pygame.Surface((self.width, self.height), pygame.SRCALPHA)
             pygame.draw.circle(self.image, (255, 220, 0), (self.width//2, self.height//2), self.width//2)
@@ -314,12 +314,14 @@ def draw_warning(surf, direction, screen_rect, pos):
 
 def main():
     pygame.init()
+    pygame.mixer.init()
+    voice_sound = pygame.mixer.Sound("C:/Users/TBL/Documents/GitHub/CK_CDTinHoc/App-trung-dong-Ngh-a/Thoại-260402_175139.mp3")
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     pygame.display.set_caption("Ancient China Evade")
     clock = pygame.time.Clock()
     
     # Background
-    bg_image = try_load_image("C:/Users/TBL/Documents/GitHub/App-trung-dong/Không-Có-Tiêu-Đề244.png", (SCREEN_WIDTH, SCREEN_HEIGHT))
+    bg_image = try_load_image("C:/Users/TBL/Documents/GitHub/CK_CDTinHoc/App-trung-dong-Ngh-a/Không-Có-Tiêu-Đề244.png", (SCREEN_WIDTH, SCREEN_HEIGHT))
     if bg_image is None:
         # fallback to a gradient background
         bg_image = pygame.Surface((SCREEN_WIDTH, SCREEN_HEIGHT))
@@ -347,15 +349,15 @@ def main():
     invincible = False
     invincible_timer = 0
     anim_frames = [
-        try_load_image(f"C:/Users/TBL/Documents/GitHub/App-trung-dong/Không Có Tiêu Đề48_20260402131904.png", (SCREEN_WIDTH, SCREEN_HEIGHT)),
-        try_load_image(f"C:/Users/TBL/Documents/GitHub/App-trung-dong/Không Có Tiêu Đề48_20260402131946.png", (SCREEN_WIDTH, SCREEN_HEIGHT)),
-        try_load_image(f"C:/Users/TBL/Documents/GitHub/App-trung-dong/Không Có Tiêu Đề48_20260402131950.png", (SCREEN_WIDTH, SCREEN_HEIGHT)),
-        try_load_image(f"C:/Users/TBL/Documents/GitHub/App-trung-dong/Không Có Tiêu Đề48_20260402131954.png", (SCREEN_WIDTH, SCREEN_HEIGHT)),
-        try_load_image(f"C:/Users/TBL/Documents/GitHub/App-trung-dong/Không Có Tiêu Đề48_20260402131958.png", (SCREEN_WIDTH, SCREEN_HEIGHT)),
-        try_load_image(f"C:/Users/TBL/Documents/GitHub/App-trung-dong/Không Có Tiêu Đề48_20260402132001.png", (SCREEN_WIDTH, SCREEN_HEIGHT)),
-        try_load_image(f"C:/Users/TBL/Documents/GitHub/App-trung-dong/Không Có Tiêu Đề48_20260402132004.png", (SCREEN_WIDTH, SCREEN_HEIGHT)),
-        try_load_image(f"C:/Users/TBL/Documents/GitHub/App-trung-dong/Không Có Tiêu Đề48_20260402132007.png", (SCREEN_WIDTH, SCREEN_HEIGHT)),
-        try_load_image(f"C:/Users/TBL/Documents/GitHub/App-trung-dong/Không Có Tiêu Đề48_20260402132010.png", (SCREEN_WIDTH, SCREEN_HEIGHT)),
+        try_load_image(f"C:/Users/TBL/Documents/GitHub/CK_CDTinHoc/App-trung-dong-Ngh-a/Không Có Tiêu Đề48_20260402131904.png", (SCREEN_WIDTH, SCREEN_HEIGHT)),
+        try_load_image(f"C:/Users/TBL/Documents/GitHub/CK_CDTinHoc/App-trung-dong-Ngh-a/Không Có Tiêu Đề48_20260402131946.png", (SCREEN_WIDTH, SCREEN_HEIGHT)),
+        try_load_image(f"C:/Users/TBL/Documents/GitHub/CK_CDTinHoc/App-trung-dong-Ngh-a/Không Có Tiêu Đề48_20260402131950.png", (SCREEN_WIDTH, SCREEN_HEIGHT)),
+        try_load_image(f"C:/Users/TBL/Documents/GitHub/CK_CDTinHoc/App-trung-dong-Ngh-a/Không Có Tiêu Đề48_20260402131954.png", (SCREEN_WIDTH, SCREEN_HEIGHT)),
+        try_load_image(f"C:/Users/TBL/Documents/GitHub/CK_CDTinHoc/App-trung-dong-Ngh-a/Không Có Tiêu Đề48_20260402131958.png", (SCREEN_WIDTH, SCREEN_HEIGHT)),
+        try_load_image(f"C:/Users/TBL/Documents/GitHub/CK_CDTinHoc/App-trung-dong-Ngh-a/Không Có Tiêu Đề48_20260402132001.png", (SCREEN_WIDTH, SCREEN_HEIGHT)),
+        try_load_image(f"C:/Users/TBL/Documents/GitHub/CK_CDTinHoc/App-trung-dong-Ngh-a/Không Có Tiêu Đề48_20260402132004.png", (SCREEN_WIDTH, SCREEN_HEIGHT)),
+        try_load_image(f"C:/Users/TBL/Documents/GitHub/CK_CDTinHoc/App-trung-dong-Ngh-a/Không Có Tiêu Đề48_20260402132007.png", (SCREEN_WIDTH, SCREEN_HEIGHT)),
+        try_load_image(f"C:/Users/TBL/Documents/GitHub/CK_CDTinHoc/App-trung-dong-Ngh-a/Không Có Tiêu Đề48_20260402132010.png", (SCREEN_WIDTH, SCREEN_HEIGHT)),
     ]
     anim_index = 0
     anim_timer = 0
@@ -397,6 +399,7 @@ def main():
                 playing_anim = True
                 anim_index = 0
                 anim_timer = 0
+                voice_sound.play()
             # Keep spawn timing fixed; difficulty comes only from speed.
 
         for event in pygame.event.get():
